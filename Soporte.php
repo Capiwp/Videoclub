@@ -35,7 +35,7 @@ Class Soporte {
 
     public function muestraResumen() {
 
-        echo $this->titulo . "<br>";
+        echo "Título:" . $this->titulo . "<br>";
 
         echo "Numero: " . $this->numero . "<br>";
 
