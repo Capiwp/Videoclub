@@ -5,13 +5,16 @@
 
         public function __construct($titulo,  $numero, $precio,$duracion)
     {
-        parent::__construct($titulo, $numero, $precio, $duracion);
-        $this -> duracion = $duracion;
+        parent::__construct($titulo, $numero, $precio);
+        $this->duracion = $duracion;
     }
-    public function mostrarInfo()
+
+    public function muestraResumen()
     {
         parent::muestraResumen();
-        echo "Duración". $this -> duracion ."<br>";
+
+        echo "Duración: ". $this->duracion ."<br>";
     }
+    
     }
 ?>
