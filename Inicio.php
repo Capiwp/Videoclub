@@ -7,6 +7,14 @@ echo "<br>Precio: " . $soporte1->getPrecio() . " euros";
 echo "<br>Precio IVA incluido: " . $soporte1->getPrecioConIVA() . " euros";
 $soporte1->muestraResumen();
 
+include "CintaVideo.php";
+
+$miCinta = new CintaVideo("Los cazafantasmas", 23, 3.5, 107); 
+echo "<strong>" . $miCinta->titulo . "</strong>"; 
+echo "<br>Precio: " . $miCinta->getPrecio() . " euros"; 
+echo "<br>Precio IVA incluido: " . $miCinta->getPrecioConIva() . " euros";
+$miCinta->muestraResumen();
+
 include "Dvd.php";
 
 $miDvd = new Dvd("Origen", 24, 15, "es,en,fr", "16:9"); 
