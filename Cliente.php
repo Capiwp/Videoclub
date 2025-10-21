@@ -3,14 +3,16 @@
     class Cliente {
 
         public $nombre;
+        private static $contador = 0;
         private $numero;
         private $soportesAlquilados = [];
         private $numSoportesAlquilados = 0;
         private $maxAlquilerConcurrente;
 
-        public function __construct($nombre, $numero, $maxAlquilerConcurrente = 3) {
+        public function __construct($nombre, $maxAlquilerConcurrente = 3) {
             $this->nombre = $nombre;
-            $this->numero = $numero;
+            self::$contador++;
+            $this->numero = self::$contador;
             $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
         }
 
@@ -103,7 +105,7 @@
 
         public function listaAlquileres(): void {
 
-            echo "El cliente " . $this->nombre . " tiene " . $this->numSoportesAlquilados . ".<br>";
+            echo "<br>El cliente " . $this->nombre . " tiene " . $this->numSoportesAlquilados . " alquileres, los cuáles son:<br>";
 
             foreach ($this->soportesAlquilados as $soporte) {
 

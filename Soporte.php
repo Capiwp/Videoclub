@@ -5,12 +5,15 @@ Class Soporte {
     public $titulo;
     protected $numero;
     private $precio;
+    private static $contador = 0;
 
-    public function __construct($titulo,  $numero, $precio)
+
+    public function __construct($titulo, $precio)
     {
         
         $this->titulo = $titulo;
-        $this->numero = $numero;
+        self::$contador++;
+        $this->numero = self::$contador;
         $this->precio = $precio;
 
     }
