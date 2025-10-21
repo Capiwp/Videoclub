@@ -1,14 +1,16 @@
 <?php
 
+    require_once 'Soporte.php';
+
     class Juego extends Soporte  {
 
         public $consola;
         private $minNumJugadores;
         private $maxNumJugadores;
 
-        public function __construct($titulo,$numero,$precio,$consola,$minNumJugadores, $maxNumJugadores)
+        public function __construct($titulo,$precio,$consola,$minNumJugadores, $maxNumJugadores)
     {
-        parent::__construct($titulo,$numero,$precio);
+        parent::__construct($titulo,$precio);
         $this->consola = $consola;
         $this->minNumJugadores = $minNumJugadores;
         $this->maxNumJugadores = $maxNumJugadores;

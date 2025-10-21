@@ -1,11 +1,14 @@
 <?php   
+
+    require_once 'Soporte.php';
+
     class CintaVideo extends Soporte
     {
         private $duracion;
 
-        public function __construct($titulo,  $numero, $precio,$duracion)
+        public function __construct($titulo, $precio,$duracion)
     {
-        parent::__construct($titulo, $numero, $precio);
+        parent::__construct($titulo, $precio);
         $this->duracion = $duracion;
     }
 
