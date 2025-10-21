@@ -4,16 +4,14 @@
 
         public $nombre;
         private $numero;
-        private $soportesAlquilados;
-        private $numSoportesAlquilados;
+        private $soportesAlquilados = [];
+        private $numSoportesAlquilados = 0;
         private $maxAlquilerConcurrente;
 
         public function __construct($nombre, $numero, $maxAlquilerConcurrente = 3) {
             $this->nombre = $nombre;
             $this->numero = $numero;
             $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
-            $this->numSoportesAlquilados = 0;
-            $this->soportesAlquilados = [];
         }
 
         public function getNombre() {
@@ -25,6 +23,12 @@
         public function setNombre($nombre)  {
 
             $this->nombre = $nombre;
+
+        }
+
+        public function getNumero() {
+
+            return $this->numero;
 
         }
 
@@ -55,17 +59,17 @@
 
             if ($this->tieneAlquilado($s)) {
 
-                echo "No se puede alquilar, ya está alquilado.";
+                echo "No se puede alquilar, ya está alquilado.<br>";
 
             } else if ($this->numSoportesAlquilados == $this->maxAlquilerConcurrente) {
 
-                echo "No se puede alquilar, máximo de alquileres concurrentes superados.";
+                echo "No se puede alquilar, máximo de alquileres concurrentes superados.<br>";
             
             } else {
 
                 $realizado = true;
 
-                echo "Agregado con éxito.";
+                echo "Agregado con éxito.<br>";
 
                 $this->numSoportesAlquilados++;
 
@@ -78,42 +82,28 @@
         }
 
         public function devolver(int $numSoporte): bool {
+        $realizado = false;
 
-            $realizado = false;
-
-            $keyABorrar = null;
-
-            foreach ($this->soportesAlquilados as $soporte) {
-                
-                if ($soporte->getNumero() === $numSoporte) {
-
-                    $keyABorrar = $soporte;
-
-                }
-
-            }
-
-            if ($keyABorrar != null) {
-
-                unset($this->soportesAlquilados, $keyABorrar);
-
-                echo "Se ha podido eliminar.";
-
+        foreach ($this->soportesAlquilados as $key => $soporte) {
+            if ($soporte->getNumero() === $numSoporte) {
+                unset($this->soportesAlquilados[$key]);
+                $this->numSoportesAlquilados--;
+                echo "Se ha podido eliminar.<br>";
                 $realizado = true;
-
-            } else {
-
-                echo "No se ha podido eliminar.";
-
+                break; // ya encontramos el soporte, salimos
             }
-
-            return $realizado;
-
         }
 
-        public function listarAlquileres(): void {
+        if (!$realizado) {
+            echo "No se ha podido eliminar.<br>";
+        }
 
-            echo "El cliente " . $this->nombre . " tiene " . $this->numSoportesAlquilados . ".";
+            return $realizado;
+    }
+
+        public function listaAlquileres(): void {
+
+            echo "El cliente " . $this->nombre . " tiene " . $this->numSoportesAlquilados . ".<br>";
 
             foreach ($this->soportesAlquilados as $soporte) {
 
@@ -125,9 +115,9 @@
 
         public function mostrarResumen() {
 
-            echo "Nombre: " . $this->getNombre();
+            echo "<br>Nombre: " . $this->getNombre() . "<br>";
 
-            echo "Cantidad de alquileres: " . $this->getNumSoportesAlquilados();
+            echo "Cantidad de alquileres: " . $this->getNumSoportesAlquilados() . "<br>";
 
         }
         

@@ -1,4 +1,10 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include_once "Soporte.php";
 include_once "CintaVideo.php";
 include_once "Dvd.php";
 include_once "Juego.php";
@@ -10,7 +16,7 @@ $cliente2 = new Cliente("Clark Kent", 33);
 
 //mostramos el número de cada cliente creado 
 echo "<br>El identificador del cliente 1 es: " . $cliente1->getNumero();
-echo "<br>El identificador del cliente 2 es: " . $cliente2->getNumero();
+echo "<br>El identificador del cliente 2 es: " . $cliente2->getNumero() . "<br>";
 
 //instancio algunos soportes 
 $soporte1 = new CintaVideo("Los cazafantasmas", 23, 3.5, 107);
@@ -31,7 +37,7 @@ $cliente1->alquilar($soporte4);
 //este soporte no lo tiene alquilado
 $cliente1->devolver(4);
 //devuelvo un soporte que sí que tiene alquilado
-$cliente1->devolver(2);
+$cliente1->devolver(23);
 //alquilo otro soporte
 $cliente1->alquilar($soporte4);
 //listo los elementos alquilados
