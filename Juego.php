@@ -16,7 +16,7 @@
 
         public function muestraJugadoresPosibles() {
 
-            echo "El número de jugadores debe estar entre " . $this->minNumJugadores . " y " . $this->maxNumJugadores;
+            echo "El número de jugadores debe estar entre " . $this->minNumJugadores . " y " . $this->maxNumJugadores . "<br>";
 
         }
 
