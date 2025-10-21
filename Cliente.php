@@ -84,50 +84,19 @@
         public function devolver(int $numSoporte): bool {
         $realizado = false;
 
-<<<<<<< Updated upstream
         foreach ($this->soportesAlquilados as $key => $soporte) {
             if ($soporte->getNumero() === $numSoporte) {
                 unset($this->soportesAlquilados[$key]);
                 $this->numSoportesAlquilados--;
                 echo "Se ha podido eliminar.<br>";
-=======
-            $realizado = false;
-
-            $keyABorrar = null;
-
-            foreach ($this->soportesAlquilados as $key => $soporte) {
-                
-                if ($soporte->getNumero() === $numSoporte) {
-
-                    $keyABorrar = $key;
-
-                }
-
-            }
-
-            if ($keyABorrar != null) {
-
-                unset($this->soportesAlquilados[$keyABorrar]);
-
-                $this->soportesAlquilados = array_values($this->soportesAlquilados);
-
-                echo "Se ha podido eliminar.";
-
-                $this->numSoportesAlquilados--;
-
->>>>>>> Stashed changes
                 $realizado = true;
                 break; // ya encontramos el soporte, salimos
             }
         }
 
-<<<<<<< Updated upstream
         if (!$realizado) {
             echo "No se ha podido eliminar.<br>";
         }
-=======
-        public function listaAlquileres(): void {
->>>>>>> Stashed changes
 
             return $realizado;
     }
