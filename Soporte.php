@@ -1,5 +1,7 @@
 <?php
 
+namespace Dwes\ProyectoVideoclub;
+
 Class Soporte {
 
     public $titulo;

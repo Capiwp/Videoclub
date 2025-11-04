@@ -1,9 +1,11 @@
 <?php
 
-    require_once 'CintaVideo.php';
-    require_once 'Dvd.php';
-    require_once 'Juego.php';
-    require_once 'Cliente.php';
+namespace Dwes\ProyectoVideoclub;
+
+    include_once 'CintaVideo.php';
+    include_once 'Dvd.php';
+    include_once 'Juego.php';
+    include_once 'Cliente.php';
 
     class Videoclub {
 

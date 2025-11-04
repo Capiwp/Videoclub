@@ -1,4 +1,5 @@
 <?php
+
 include "Soporte.php";
 
 $soporte1 = new Soporte("Tenet", 22, 3); 
