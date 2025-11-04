@@ -55,7 +55,7 @@
 
         }
 
-        public function alquilar(Soporte $s) : bool {
+        public function alquilar(Soporte $s) : Cliente {
 
             $realizado = false;
 
@@ -79,7 +79,7 @@
 
             }
 
-            return $realizado;
+            return $this;
 
         }
 
