@@ -2,10 +2,7 @@
 
 namespace Dwes\ProyectoVideoclub;
 
-    include_once 'CintaVideo.php';
-    include_once 'Dvd.php';
-    include_once 'Juego.php';
-    include_once 'Cliente.php';
+    require_once '../autoload.php';
 
     class Videoclub {
 

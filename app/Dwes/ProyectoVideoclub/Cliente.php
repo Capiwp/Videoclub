@@ -2,6 +2,10 @@
 
 namespace Dwes\ProyectoVideoclub;
 
+use Dwes\ProyectoVideoclub\Util\CupoSuperadoException;
+use Dwes\ProyectoVideoclub\Util\SoporteYaAlquiladoException;
+use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
+
     class Cliente {
 
         public $nombre;
@@ -59,19 +63,15 @@ namespace Dwes\ProyectoVideoclub;
 
         public function alquilar(Soporte $s) : Cliente {
 
-            $realizado = false;
-
             if ($this->tieneAlquilado($s)) {
 
-                echo "No se puede alquilar, ya está alquilado.<br>";
+                throw new SoporteYaAlquiladoException("El soporte ya está alquilado.");
 
             } else if ($this->numSoportesAlquilados == $this->maxAlquilerConcurrente) {
 
-                echo "No se puede alquilar, máximo de alquileres concurrentes superados.<br>";
+                throw new CupoSuperadoException("El cliente '$this->nombre' ha superado el cupo de alquileres.");
             
             } else {
-
-                $realizado = true;
 
                 echo "Agregado con éxito.<br>";
 
@@ -94,7 +94,7 @@ namespace Dwes\ProyectoVideoclub;
                 $this->numSoportesAlquilados--;
                 echo "Se ha podido eliminar.<br>";
                 $realizado = true;
-                break; // ya encontramos el soporte, salimos
+                break;
             }
         }
 
