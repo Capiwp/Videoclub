@@ -1,21 +1,8 @@
 <?php 
 session_start();
-
-//Si es usuario lo manda a mainCliente si es admin lo manda mainAdmin
-if (isset($_SESSION['admin']))
-    {
-        header('Location: mainAdmin.php');
-        exit;
-    }
-    elseif (isset($_SESSION['usuario']))
-        {
-           header('Location: mainCliente.php');
-           exit;
-        }
-
-    $error = $_GET['error'] ?? '';
+$error = $_SESSION['error'] ?? null;
+unset($_SESSION['error']);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,19 +11,14 @@ if (isset($_SESSION['admin']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
 </head>
-<body>
-    <?php 
-        if($error)
-            {?>
-            <p>Usuario o Contraseña incorrectos</p>
-                
-           <?php }?> 
-    
-    <form id="formulario" action="login.php" method="post">
-        <label>Usuario</label><input type="text" name="usuario" />
-        <label>Contraseña</label><input type="password" name="password" />
+<body>    
+    <form id="formulario" action="login.php" method="post"> 
 
-        <button type="submit">Mandar</button>    
+        <label>Usuario: </label><input type="text" name="usuario" id="usuario"/>
+        <label>Contraseña: </label><input type="password" name="password" id="password"/>
+        <button type="submit" name="enviar">Enviar</button>    
+        <div><span class='error'><?php echo $error; ?></span></div>
+    
     </form>
 </body>
 </html>
