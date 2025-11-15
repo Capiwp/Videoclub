@@ -61,49 +61,49 @@ use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
 
         }
 
-        public function alquilar(Soporte $s) : Cliente {
-
+        public function alquilar(Soporte $s): Cliente
+        {
             if ($this->tieneAlquilado($s)) {
-
-                throw new SoporteYaAlquiladoException("El soporte ya está alquilado.");
-
-            } else if ($this->numSoportesAlquilados == $this->maxAlquilerConcurrente) {
-
-                throw new CupoSuperadoException("El cliente '$this->nombre' ha superado el cupo de alquileres.");
-            
-            } else {
-
-                echo "Agregado con éxito.<br>";
-
-                $this->numSoportesAlquilados++;
-
-                $this->soportesAlquilados[] = $s;
-
+                throw new \Dwes\ProyectoVideoclub\Util\SoporteYaAlquiladoException(
+                    "El soporte ya está alquilado."
+                );
             }
+
+            if ($this->numSoportesAlquilados >= $this->maxAlquilerConcurrente) {
+                throw new \Dwes\ProyectoVideoclub\Util\CupoSuperadoException(
+                    "El cliente '{$this->nombre}' ha superado el cupo de alquileres."
+                );
+            }
+
+            $this->soportesAlquilados[] = $s;
+            $this->numSoportesAlquilados++;
+
+            $s->alquilado=true;
 
             return $this;
-
         }
 
-        public function devolver(int $numSoporte): bool {
-        $realizado = false;
 
-        foreach ($this->soportesAlquilados as $key => $soporte) {
-            if ($soporte->getNumero() === $numSoporte) {
-                unset($this->soportesAlquilados[$key]);
-                $this->numSoportesAlquilados--;
-                echo "Se ha podido eliminar.<br>";
-                $realizado = true;
-                break;
+        public function devolver(int $numSoporte)
+        {
+            foreach ($this->soportesAlquilados as $key => $soporte) {
+
+                if ($soporte->getNumero() === $numSoporte) {
+
+                    unset($this->soportesAlquilados[$key]);
+                    $this->numSoportesAlquilados--;
+
+                    $soporte->alquilado=false;
+
+                    return $this;
+                }
             }
+
+            throw new \Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException(
+                "El soporte no está alquilado por este cliente."
+            );
         }
 
-        if (!$realizado) {
-            echo "No se ha podido eliminar.<br>";
-        }
-
-            return $realizado;
-    }
 
         public function listaAlquileres(): void {
 
