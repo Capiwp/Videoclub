@@ -14,12 +14,17 @@ use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
         private $soportesAlquilados = [];
         private $numSoportesAlquilados = 0;
         private $maxAlquilerConcurrente;
+        protected string $user;
+        protected string $password;
 
-        public function __construct($nombre, $maxAlquilerConcurrente = 3) {
+
+        public function __construct($nombre, $maxAlquilerConcurrente = 3, string $user, string $password) {
             $this->nombre = $nombre;
             self::$contador++;
             $this->numero = self::$contador;
             $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+            $this->user = $user;
+            $this->password = $password;
         }
 
         public function getNombre() {
@@ -44,6 +49,14 @@ use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
 
             return $this->numSoportesAlquilados;
 
+        }
+
+        public function getUser(): string {
+            return $this->user;
+        }
+
+        public function getPassword(): string {
+            return $this->password;
         }
 
         public function tieneAlquilado(Soporte $s): bool {
@@ -114,6 +127,20 @@ use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
                 $soporte->muestraResumen();
 
             }
+
+        }
+
+        public function getAlquileres(): array {
+
+            $alquileres = [];
+
+            foreach ($this->soportesAlquilados as $soporte) {
+
+                array_push($alquileres, $soporte);
+
+            }
+
+            return $alquileres;
 
         }
 

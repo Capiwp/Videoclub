@@ -21,6 +21,13 @@ Class Soporte {
 
     }
 
+    public function getTitulo() {
+
+        return $this->titulo;
+
+    }
+
+
     public function getPrecio() {
 
         return $this->precio;
