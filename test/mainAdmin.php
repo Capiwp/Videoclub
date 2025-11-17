@@ -32,7 +32,15 @@ $admin = $_SESSION['admin'];
     
     foreach ($_SESSION['clientes'] as $cliente) :
         ?>
-        <li><?php echo $cliente->getNombre() . " | User: " . $cliente->getUser()?></li>
+        <span><li><?php echo $cliente->getNombre() . " | User: " . $cliente->getUser()?></span>
+
+        <form action="formUpdateCliente.php" method="get" style="display:inline-block; margin-left:10px;">
+        <input type="hidden" name="id" value="<?= $cliente->getNumero() ?>">
+        <input type="hidden" name="origen" value="mainAdmin.php">
+        <button type="submit">Actualizar Cliente</button>
+        </li>
+        </form>
+
 
     <?php endforeach; ?>
     </ul>

@@ -39,6 +39,8 @@ use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
 
         }
 
+        
+
         public function getNumero() {
 
             return $this->numero;
@@ -51,12 +53,32 @@ use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
 
         }
 
+        public function getMaxAlquilerConcurrente() {
+
+            return $this->maxAlquilerConcurrente;
+
+        }
+
+        public function setMaxAlquilerConcurrente($maxAlquilerConcurrente) {
+
+            $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+
+        }
+
         public function getUser(): string {
             return $this->user;
         }
 
+        public function setUser($user) {
+            $this->user = $user;
+        }
+
         public function getPassword(): string {
             return $this->password;
+        }
+
+        public function setPassword($password) {
+            $this->password = $password;
         }
 
         public function tieneAlquilado(Soporte $s): bool {

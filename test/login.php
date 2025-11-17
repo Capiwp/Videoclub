@@ -14,27 +14,18 @@ session_start();
         $usuario = $_POST['usuario'];
         $password = $_POST['password'];
 
-        if(!isset($_SESSION['clientes'])) {
-
             $cliente1 = new Cliente("Amancio Ortega", 3, "amancio", "1234");
             $cliente2 = new Cliente("Pablo Picasso", 2, "picasso", "1234");
 
-            $_SESSION['clientes'] = [$cliente1, $cliente2]; 
-
-        }
-
-        if(!isset($_SESSION['soportes'])) {
+            $_SESSION['clientes'] = [$cliente1, $cliente2];         
 
             $soporte1 = new Juego("God of War", 39.99, "PS5", 1, 2);
             $soporte2 = new Juego("The Last of Us II", 69.99, "PS4", 1, 3);
             $soporte3 = new Dvd("Torrente", 9.99, "ES", "16:9");
 
+            $cliente1->alquilar($soporte1);
+
             $_SESSION['soportes'] = [$soporte1, $soporte2, $soporte3];
-
-                        $cliente1->alquilar($soporte1);
-
-
-        }
 
         if (empty($usuario) || empty($password)) {
 

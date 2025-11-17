@@ -1,5 +1,12 @@
 <?php 
 session_start();
+
+if (!isset($_COOKIE["cookies_tecnicas"])) {
+    $_SESSION["error"] = "Debes aceptar las cookies técnicas para iniciar sesión.";
+    header("Location: cookies.php");
+    exit();
+}
+
 $error = $_SESSION['error'] ?? null;
 unset($_SESSION['error']);
 ?>
@@ -18,7 +25,7 @@ unset($_SESSION['error']);
         <label>Contraseña: </label><input type="password" name="password" id="password"/>
         <button type="submit" name="enviar">Enviar</button>    
         <div><span class='error'><?php echo $error; ?></span></div>
-    
+
     </form>
 </body>
 </html>

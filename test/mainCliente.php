@@ -23,6 +23,12 @@ if(!isset($_SESSION["usuario"]))
 <body>
     <h1>Bienvenido, <?php echo $usuario->getNombre() ?></h1>
 
+    <p>ID: <?php echo $usuario->getNumero()?></p>
+    <p>Usuario: <?php echo $usuario->getUser()?></p>
+    <p>Contraseña: <?php echo $usuario->getPassword()?></p>
+    <p>Máximo de Alquileres Concurrentes: <?php echo $usuario->getMaxAlquilerConcurrente()?></p>
+
+
     <h3>Listado de alquileres</h3>
 
     <ul>
@@ -35,7 +41,14 @@ if(!isset($_SESSION["usuario"]))
 
     </ul>
 
-    <div><a href="logout.php"><button>Cerrar Sesión</button></a></div>
+    <div><label>
+    <form action="formUpdateCliente.php" method="get">
+    <input type="hidden" name="id" value="<?= $usuario->getNumero() ?>">
+    <input type="hidden" name="origen" value="mainCliente.php">
+    <button type="submit">Actualizar Cliente</button>
+    </form></label>
+
+    <a href="logout.php"><button>Cerrar Sesión</button></a></div>
 
 
 </body>
