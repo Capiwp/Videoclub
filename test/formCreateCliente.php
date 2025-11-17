@@ -9,10 +9,10 @@ unset($_SESSION['error']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Crear Cliente</title>
 </head>
 <body>    
-    <form id="formulario" action="updateCliente.php" method="post"> 
+    <form id="formulario" action="createCliente.php" method="post"> 
 
         <label>Nombre completo: </table></label><input type="text" name="nombre" id="nombre"/><br><br>
         <label>Máximo de alquileres: </label><input type="integer" name="maxAlquileres" id="maxAlquileres"/><br><br>

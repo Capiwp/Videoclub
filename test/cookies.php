@@ -27,7 +27,7 @@ if (isset($_POST["guardarCookies"])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gestión de cookies</title>
+    <title>Cookies</title>
 </head>
 <body>
 

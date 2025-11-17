@@ -18,7 +18,7 @@ use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
         protected string $password;
 
 
-        public function __construct($nombre, $maxAlquilerConcurrente = 3, string $user, string $password) {
+        public function __construct($nombre, string $user, string $password,  $maxAlquilerConcurrente = 3) {
             $this->nombre = $nombre;
             self::$contador++;
             $this->numero = self::$contador;

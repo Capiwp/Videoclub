@@ -24,7 +24,7 @@ $admin = $_SESSION['admin'];
     <title>Administrador</title>
 </head>
 <body>
-    <h1>Bienvenido, <?php echo $admin?></h1>
+    <h1>Bienvenido, Administrador</h1>
     <h3>Listado de Clientes</h3>
 
     <ul>
@@ -34,12 +34,18 @@ $admin = $_SESSION['admin'];
         ?>
         <span><li><?php echo $cliente->getNombre() . " | User: " . $cliente->getUser()?></span>
 
+        <div style="display:inline-block; margin-left:10px;">
         <form action="formUpdateCliente.php" method="get" style="display:inline-block; margin-left:10px;">
         <input type="hidden" name="id" value="<?= $cliente->getNumero() ?>">
         <input type="hidden" name="origen" value="mainAdmin.php">
         <button type="submit">Actualizar Cliente</button>
-        </li>
         </form>
+
+        <form action="removeCliente.php" method="get" style="display:inline-block; margin-left:10px;">
+        <input type="hidden" name="id" value="<?= $cliente->getNumero() ?>">
+        <button type="submit">Borrar Cliente</button>
+        </form>
+        </div>
 
 
     <?php endforeach; ?>

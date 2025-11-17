@@ -3,8 +3,6 @@
 require_once __DIR__ . "/../autoload.php";
 
 use Dwes\ProyectoVideoclub\Cliente;
-use Dwes\ProyectoVideoclub\Juego;
-use Dwes\ProyectoVideoclub\Dvd;
 
 session_start();
 
